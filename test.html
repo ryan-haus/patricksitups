@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            flex-flow: column;
+            color: white;
+            background-color: black;
+        }
+        h1, footer {
+            text-align: center;
+        }
+
+        img {
+            margin: auto;
+            max-height: 100%;
+            max-width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        figure {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body onkeydown="myFunction()" onkeyup="myFunction2()">
+
+    <h1 id="aa">Tap or mash space bar</h1>
+
+
+<figure>  <img src="sitdown.png" id="pic" /></figure>  
+
+<footer> Inspired by Funhaus - <a href="https://www.youtube.com/watch?v=qxavlMWB8oc">How To Do a Pretend Sit Up - Word of the Day Random Gameplay</a> </footer>
+
+    <script>
+        var pressed = false;
+        var cnt = 0;
+        function myFunction() {
+            if (pressed) return;
+            cnt++;
+            document.getElementById("pic").src = "situp.png";
+            pressed = true;
+            document.getElementById("aa").innerHTML = cnt + " SIT UPS";
+            if(cnt > 100)
+            {
+                document.getElementById("aa").innerHTML += " - SHREDDED!";
+            }
+            else if(cnt > 50)
+            {
+                document.getElementById("aa").innerHTML += " - RIPPED!";
+            }
+            else if(cnt > 25)
+            {
+                document.getElementById("aa").innerHTML += " - JACKED!"
+            }
+        }
+
+        function myFunction2() {
+            pressed = false;
+            document.getElementById("pic").src = "sitdown.png";
+        }
+
+        document.body.addEventListener('touchstart', myFunction);
+        document.body.addEventListener('touchend', myFunction2);
+
+    </script>
+
+</body>
+
+</html>
